@@ -1,0 +1,6 @@
+core = "6.x"
+description = "A set of imagecache presets to be used with the 960 grid system"
+name = "Imagecache 960 (12-column)"
+package = "A set of modules by South Central Media"
+project = "imagecache_ninesixty_12col"
+version = "6.x-0.1"

@@ -1,0 +1,20 @@
+<?php
+
+include_once('imagecache_ninesixty.admin.inc');
+
+/**
+ * Implementation of hook_menu().
+ */
+function imagecache_ninesixty_menu() {
+  $items = array();
+
+  $items['admin/settings/imagecache_ninesixty'] = array(
+    'title' => t('Imagecache 960 Settings'),
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('imagecache_ninesixty_admin_settings'),
+    'access callback' => 'user_access',
+    'access arguments' => array('administer site configuration'),
+  );
+
+  return $items;
+}

@@ -1,0 +1,8 @@
+<?php
+
+function imagecache_ninesixty_16col_imagecache_default_presets() {
+  module_load_include('inc', 'imagecache_ninesixty', 'imagecache_ninesixty');
+  
+  $items = _get_items(16);
+  return $items;
+}

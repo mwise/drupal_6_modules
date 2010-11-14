@@ -1,6 +1,8 @@
-core = "6.x"
-description = "A set of imagecache presets to be used with the 960 grid system (12-column)"
 name = "Imagecache 960 (12-column)"
 project = "imagecache_ninesixty_12col"
+description = "A set of imagecache presets to be used with the 960 grid system (12-column)"
 version = "6.x-0.1"
 dependencies[] = "imagecache_ninesixty"
+package = ImageCache
+
+core = "6.x"

@@ -1,7 +1,9 @@
-core = "6.x"
-description = "Provides the basic framework for the 12-column and 16-column imagecache_ninesixty modules"
 name = "Imagecache 960 Core"
-dependencies[] = "imagecache"
-package = "A set of modules by South Central Media"
 project = "imagecache_ninesixty"
+description = "Provides the basic framework for the 12-column and 16-column imagecache_ninesixty modules"
 version = "6.x-0.1"
+dependencies[] = "imagecache"
+package = ImageCache
+core = "6.x"
+
+

@@ -68,7 +68,6 @@ function theme_imagecache_get_all_info($reset = FALSE) {
       $info = $theme_info->info;
     }
     else {
-      //$default = variable_get('theme_default', 'garland');
       $result = db_query("SELECT name,type,info FROM {system} WHERE type = 'theme' AND status = '1'");
       while ($row = db_fetch_object($result)) {
 

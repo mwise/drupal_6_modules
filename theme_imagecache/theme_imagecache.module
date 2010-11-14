@@ -1,0 +1,85 @@
+<?php
+
+/**
+ * Implementation of hook_imagecache_default_presets().
+ */
+function theme_imagecache_imagecache_default_presets() {
+  $presets = array();
+
+  // Generate imagecache presets per image entry in theme info.
+  $all_info = theme_imagecache_get_all_info();
+  
+  foreach($all_info as $theme_name => $preset_info){
+          
+      foreach ($preset_info as $preset => $image_info) {
+          list($action, $dimensions) = explode(':', $image_info);
+          list($width, $height) = explode('x', $dimensions);
+          $valid_actions = imagecache_action_definitions();
+
+          if (isset($valid_actions[$action]) ) {
+            
+            switch($action){
+              case 'imagecache_scale_and_crop':
+                if(is_numeric($width) && is_numeric($height)) {
+                  $data = array (
+                    'width' => $width,
+                    'height' => $height,
+                  );
+                }
+                break;
+              
+              case 'imagecache_scale':
+                $data = array (
+                  'width' => $width,
+                  'height' => $height,
+                );
+                break;
+            }
+            
+            $presets["{$theme_name}_{$preset}"] = array (
+              'presetname' => "{$theme_name}-{$preset}",
+              'actions' => array (
+                0 => array (
+                  'weight' => '0',
+                  'module' => 'imagecache',
+                  'action' => $action,
+                  'data' => $data,
+                ),
+              ),
+            );
+          }
+
+      }
+    
+  }
+  // dpm($presets);
+
+  return $presets;
+}
+
+/**
+ * Retrieve theme_imagecache info for all enabled themes.
+ */
+function theme_imagecache_get_all_info($reset = FALSE) {
+  static $info;
+  if (!isset($info) || $reset) {
+    global $theme_key, $theme_info;
+    if (isset($theme_info, $theme_key) && $theme_key == variable_get('theme_default', 'garland')) {
+      $info = $theme_info->info;
+    }
+    else {
+      //$default = variable_get('theme_default', 'garland');
+      $result = db_query("SELECT name,type,info FROM {system} WHERE type = 'theme' AND status = '1'");
+      while ($row = db_fetch_object($result)) {
+
+        $info = unserialize($row->info);
+        if($info['theme_imagecache']){
+          $all_info[$row->name] = $info['theme_imagecache'];
+        }
+        
+      }
+    }
+  }
+
+  return isset($all_info) ? $all_info : FALSE;
+}

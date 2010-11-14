@@ -5,5 +5,10 @@ This module scans all themes in the system for 'theme_imagecache' declarations i
 
 An example of valid declarations is:
 
-theme_imagecache[hero_shot] = "imagecache_scale_and_crop:580x320"
-theme_imagecache[promotion_image] = "imagecache_scale_and_crop:250x150"
+theme_imagecache[myimage] = "imagecache_scale_and_crop:580x320"
+theme_imagecache[node_57] = "imagecache_scale_and_crop:250x150"
+
+Please enjoy!
+
+Mark Wise
+markmediadude@gmail.com

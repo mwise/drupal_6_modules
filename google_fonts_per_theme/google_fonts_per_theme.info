@@ -1,4 +1,4 @@
 name = "Google Fonts per Theme"
 description = "Allows theme authors to specify Google fonts for inclusion via external CSS."
-package = "0 - Contribu"
+package = "0 - Google Fonts"
 core = "6.x"

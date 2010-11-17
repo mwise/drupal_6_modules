@@ -9,7 +9,6 @@ function _google_fonts_per_theme_page_alter(&$vars){
   $result = db_query("SELECT name,type,info FROM {system} WHERE type = 'theme' AND name = '%s'", $theme_key);
   while ($row = db_fetch_object($result)) {
     $info = unserialize($row->info);
-    // dpm($info);
     $fonts = $info['fonts'];
   }
 

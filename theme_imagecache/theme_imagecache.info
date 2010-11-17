@@ -1,4 +1,4 @@
 name = "Theme Imagecache"
 description = "Allows theme authors to specify imagecache presets."
-dependencies[] = "imagecache"
+dependencies[] = "ImageCache"
 core = "6.x"

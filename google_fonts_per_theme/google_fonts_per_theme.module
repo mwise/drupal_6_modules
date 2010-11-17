@@ -1,0 +1,29 @@
+<?php
+
+define('GFONT_BASE_URL', 'http://fonts.googleapis.com/css');
+
+function _google_fonts_per_theme_page_alter(&$vars){
+  $theme_key = $vars['theme_settings']['theme'];
+  
+  $fonts = array();
+  $result = db_query("SELECT name,type,info FROM {system} WHERE type = 'theme' AND name = '%s'", $theme_key);
+  while ($row = db_fetch_object($result)) {
+    $info = unserialize($row->info);
+    // dpm($info);
+    $fonts = $info['fonts'];
+  }
+
+  $family = "";
+  
+  if($fonts){
+    foreach($fonts as $key => $font){
+      $fonts[$key] = str_replace(' ', '+', $font);
+    }
+    $family = implode('|', $fonts);
+  }
+        
+  $gfonts_css_url = GFONT_BASE_URL . "?family=$family";
+  $gfont_link = "<link type=\"text/css\" rel=\"stylesheet\" media=\"all\" href=\"$gfonts_css_url\" /> ";  
+  $vars['styles'] .= $gfont_link;
+
+}

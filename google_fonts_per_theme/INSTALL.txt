@@ -1,0 +1,14 @@
+Installation:
+------------
+
+1. Download and enable the module as usual
+2. Add the following to your theme's hook_preprocess_page call in template.php:
+
+
+function HOOK_preprocess_page(&$vars, $hook){
+	if (module_exists('google_fonts_per_theme')) {
+	  _google_fonts_per_theme_page_alter($vars);
+	}
+	
+	... your other code
+}

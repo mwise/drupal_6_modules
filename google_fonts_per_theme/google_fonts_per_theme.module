@@ -3,7 +3,7 @@
 define('GFONT_BASE_URL', 'http://fonts.googleapis.com/css');
 
 function _google_fonts_per_theme_page_alter(&$vars){
-  $theme_key = $vars['theme_settings']['theme'];
+  global $theme_key;
   
   $fonts = array();
   $result = db_query("SELECT name,type,info FROM {system} WHERE type = 'theme' AND name = '%s'", $theme_key);
